@@ -1,0 +1,1580 @@
+html {
+    scroll-behavior: smooth;
+}
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1);
+    color: white;
+}
+
+h1 {
+    font-size: 55px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 20px;
+}
+.birthday-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gift {
+    font-size: 120px;
+    margin: 30px 0;
+    animation: giftBounce 2s infinite;
+    cursor: pointer;
+}
+
+@keyframes giftBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+#surpriseButton {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+
+    background: #ff4f81;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    transition: 0.3s;
+}
+
+#surpriseButton:hover {
+    transform: scale(1.08);
+    background: #ff2865;
+}
+#birthdayMessage {
+    display: none;
+
+    max-width: 600px;
+
+    margin-top: 30px;
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.2);
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    animation: messageAppear 1.5s ease;
+}
+
+#birthdayMessage h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+#birthdayMessage p {
+    line-height: 1.7;
+}
+
+@keyframes messageAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+.gallery-section {
+    width: 90%;
+    max-width: 1100px;
+
+    margin-top: 80px;
+
+    text-align: center;
+}
+
+.gallery-section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-shadow: 0 3px rgba(0, 0, 0, 0.25);
+}
+
+.gallery-section > p {
+    margin-bottom: 35px;
+}
+
+.gallery {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.photo-card {
+    height: 250px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: white;
+
+    padding: 10px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.4s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover img {
+    transform: scale(1.05);
+}
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 38px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .photo-card {
+        height: 200px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-card {
+        height: 280px;
+    }
+
+}
+/* =========================
+   MEMORY TIMELINE
+========================= */
+
+.timeline-section {
+    width: 90%;
+    max-width: 1000px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.timeline-section h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.timeline-intro {
+    margin-bottom: 60px;
+}
+
+.timeline {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+/* Center line */
+
+.timeline::after {
+    content: "";
+    position: absolute;
+
+    width: 5px;
+
+    background: rgba(255, 255, 255, 0.6);
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    margin-left: -2px;
+
+    border-radius: 10px;
+}
+
+/* Timeline item */
+
+.timeline-item {
+    position: relative;
+
+    width: 50%;
+
+    padding: 20px 40px;
+}
+
+/* Left */
+
+.timeline-item.left {
+    left: 0;
+
+    text-align: right;
+}
+
+/* Right */
+
+.timeline-item.right {
+    left: 50%;
+
+    text-align: left;
+}
+
+/* Timeline cards */
+
+.timeline-content {
+    position: relative;
+
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    transition: 0.4s ease;
+}
+
+.timeline-content:hover {
+    transform: scale(1.05);
+}
+
+.timeline-content h3 {
+    font-size: 28px;
+
+    margin-bottom: 5px;
+}
+
+.timeline-content h4 {
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+/* Icons */
+
+.timeline-icon {
+    font-size: 35px;
+
+    display: inline-block;
+
+    margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+
+    .timeline::after {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+
+        padding-left: 60px;
+        padding-right: 10px;
+
+        margin-bottom: 20px;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+
+        text-align: left;
+    }
+
+    .timeline-content {
+        padding: 20px;
+    }
+
+    .timeline-section h2 {
+        font-size: 30px;
+    }
+
+}
+/* =========================
+   BIRTHDAY CAKE
+========================= */
+
+.cake-section {
+    width: 90%;
+    max-width: 900px;
+
+    margin: 120px auto;
+
+    text-align: center;
+}
+
+.cake-section h2 {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.cake-section > p {
+    margin-bottom: 60px;
+}
+
+/* Cake container */
+
+.cake-container {
+    position: relative;
+
+    width: 350px;
+
+    margin: 0 auto 40px;
+
+    padding-top: 80px;
+}
+
+/* Candles */
+
+.candles {
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 35px;
+
+    align-items: flex-end;
+}
+
+.candle {
+    width: 18px;
+
+    height: 70px;
+
+    background: linear-gradient(
+        to right,
+        #ffffff,
+        #ff9ec4
+    );
+
+    border-radius: 5px;
+
+    position: relative;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Candle flame */
+
+.flame {
+    position: absolute;
+
+    width: 18px;
+
+    height: 25px;
+
+    background: #ffd700;
+
+    border-radius: 50% 50% 50% 0;
+
+    transform: rotate(-45deg);
+
+    top: -22px;
+
+    left: 0;
+
+    animation: flameAnimation 0.5s infinite alternate;
+}
+
+/* Flame movement */
+
+@keyframes flameAnimation {
+
+    from {
+        transform: rotate(-45deg) scale(1);
+    }
+
+    to {
+        transform: rotate(-45deg) scale(1.15);
+    }
+
+}
+
+/* Cake */
+
+.cake {
+    position: relative;
+
+    width: 300px;
+
+    margin: auto;
+}
+
+/* Top */
+
+.cake-top {
+    height: 70px;
+
+    background: #fff0f5;
+
+    border-radius: 50%;
+
+    border: 5px solid #ff8fab;
+
+    position: relative;
+
+    z-index: 3;
+}
+
+/* Middle */
+
+.cake-middle {
+    height: 80px;
+
+    background: #ff8fab;
+
+    margin-top: -30px;
+
+    border-radius: 10px;
+
+    border: 5px solid #ff6f91;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+/* Bottom */
+
+.cake-bottom {
+    height: 70px;
+
+    background: #ffc2d1;
+
+    margin-top: -20px;
+
+    border-radius: 10px 10px 25px 25px;
+
+    border: 5px solid #ff8fab;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+/* Cake button */
+
+#blowButton {
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ff4f81;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    transition: 0.3s;
+}
+
+#blowButton:hover {
+    transform: scale(1.08);
+
+    background: #ff2865;
+}
+
+/* Wish message */
+
+#wishMessage {
+    display: none;
+
+    margin-top: 35px;
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    animation: wishAppear 1.5s ease;
+}
+
+#wishMessage p {
+    font-size: 20px;
+
+    margin-top: 15px;
+}
+
+@keyframes wishAppear {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+}
+@media (max-width: 480px) {
+
+    .cake-container {
+        width: 300px;
+    }
+
+    .cake {
+        width: 250px;
+    }
+
+    .cake-section h2 {
+        font-size: 30px;
+    }
+
+    .candles {
+        gap: 25px;
+    }
+
+    .candle {
+        width: 15px;
+        height: 60px;
+    }
+
+}
+/* =========================
+   SECRET LETTER
+========================= */
+
+.letter-section {
+    width: 90%;
+    max-width: 900px;
+
+    margin: 120px auto;
+
+    text-align: center;
+}
+
+.letter-section h2 {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+.letter-section > p {
+    margin-bottom: 50px;
+}
+
+/* Envelope */
+
+.envelope-container {
+    width: 350px;
+    height: 250px;
+
+    margin: 0 auto 40px;
+
+    perspective: 1000px;
+}
+
+.envelope {
+    position: relative;
+
+    width: 350px;
+    height: 220px;
+
+    margin: auto;
+
+    background: #ff8fab;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+}
+
+/* Envelope flap */
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 175px solid transparent;
+    border-right: 175px solid transparent;
+
+    border-top: 120px solid #ff6f91;
+
+    z-index: 3;
+
+    transform-origin: top;
+
+    transition: transform 1s ease;
+}
+
+/* Letter */
+
+.letter-paper {
+    position: absolute;
+
+    width: 310px;
+
+    left: 20px;
+
+    bottom: -170px;
+
+    padding: 25px;
+
+    background: white;
+
+    color: #444;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    transition: bottom 1.2s ease;
+
+    z-index: 2;
+}
+
+.letter-paper h3 {
+    color: #ff4f81;
+
+    margin-bottom: 15px;
+}
+
+.letter-paper p {
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-bottom: 12px;
+}
+
+/* Open button */
+
+#letterButton {
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ff4f81;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2);
+
+    transition: 0.3s;
+}
+
+#letterButton:hover {
+    transform: scale(1.08);
+
+    background: #ff2865;
+}
+
+/* Open envelope */
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+
+    z-index: 1;
+}
+
+.envelope.open .letter-paper {
+    bottom: 25px;
+}
+@media (max-width: 480px) {
+
+    .envelope-container {
+        width: 290px;
+    }
+
+    .envelope {
+        width: 290px;
+    }
+
+    .envelope-flap {
+        border-left-width: 145px;
+        border-right-width: 145px;
+    }
+
+    .letter-paper {
+        width: 250px;
+        left: 20px;
+    }
+
+    .letter-paper p {
+        font-size: 12px;
+    }
+
+}
+/* =========================
+   GRAND FINALE
+========================= */
+
+.final-section {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 700px;
+
+    margin-top: 120px;
+
+    padding: 100px 20px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.15),
+            transparent 60%
+        );
+}
+
+.final-section h2 {
+    font-size: 40px;
+
+    margin-bottom: 20px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+.final-section > p {
+    font-size: 18px;
+
+    margin-bottom: 40px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+#finalBirthdayText {
+    font-size: 65px;
+
+    margin: 40px 0;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 20px #ff4f81,
+        0 0 40px #ff4f81;
+
+    animation: birthdayGlow 1.5s infinite alternate;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+@keyframes birthdayGlow {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.05);
+    }
+
+}
+
+/* Fireworks button */
+
+#fireworksButton {
+    padding: 18px 35px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background: #ff4f81;
+
+    color: white;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.3);
+
+    transition: 0.3s;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+#fireworksButton:hover {
+    transform: scale(1.1);
+
+    background: #ff2865;
+}
+
+/* Balloons */
+
+.floating-balloons span {
+    position: absolute;
+
+    font-size: 60px;
+
+    bottom: -100px;
+
+    animation: balloonFloat 8s linear infinite;
+
+    z-index: 2;
+}
+
+.floating-balloons span:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-balloons span:nth-child(2) {
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.floating-balloons span:nth-child(3) {
+    right: 25%;
+    animation-delay: 4s;
+}
+
+.floating-balloons span:nth-child(4) {
+    right: 8%;
+    animation-delay: 1s;
+}
+
+@keyframes balloonFloat {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-400px) rotate(10deg);
+    }
+
+    100% {
+        transform: translateY(-800px) rotate(-10deg);
+    }
+
+}
+
+/* Fireworks */
+
+.firework {
+    position: absolute;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px white,
+        0 0 40px white;
+
+    animation: fireworkExplode 1.5s ease-out forwards;
+}
+
+@keyframes fireworkExplode {
+
+    0% {
+        transform: scale(0);
+
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(8);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(15);
+
+        opacity: 0;
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    #finalBirthdayText {
+        font-size: 40px;
+    }
+
+    .final-section h2 {
+        font-size: 30px;
+    }
+
+    .floating-balloons span {
+        font-size: 40px;
+    }
+
+}
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+#musicButton {
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.2);
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2);
+
+    z-index: 10000;
+
+    transition: 0.3s;
+}
+
+#musicButton:hover {
+    transform: scale(1.05);
+
+    background: rgba(255, 255, 255, 0.35);
+}
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+#musicButton {
+    position: fixed !important;
+
+    top: 20px !important;
+    right: 20px !important;
+
+    display: block !important;
+
+    padding: 12px 20px !important;
+
+    background: #ff4f81 !important;
+
+    color: white !important;
+
+    border: none !important;
+
+    border-radius: 25px !important;
+
+    font-size: 16px !important;
+
+    font-weight: bold !important;
+
+    cursor: pointer !important;
+
+    z-index: 99999 !important;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+}
+
+#musicButton:hover {
+    transform: scale(1.05);
+
+    background: #ff2865 !important;
+}
+/* =========================
+   FLOATING HEARTS & SPARKLES
+========================= */
+
+.floating-effects {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+.floating-effects span {
+    position: absolute;
+
+    bottom: -50px;
+
+    font-size: 25px;
+
+    animation: floatingHeart 10s linear infinite;
+
+    opacity: 0.8;
+}
+
+
+/* Different positions */
+
+.floating-effects span:nth-child(1) {
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.floating-effects span:nth-child(2) {
+    left: 15%;
+    animation-delay: 2s;
+}
+
+.floating-effects span:nth-child(3) {
+    left: 25%;
+    animation-delay: 4s;
+}
+
+.floating-effects span:nth-child(4) {
+    left: 35%;
+    animation-delay: 1s;
+}
+
+.floating-effects span:nth-child(5) {
+    left: 45%;
+    animation-delay: 5s;
+}
+
+.floating-effects span:nth-child(6) {
+    left: 60%;
+    animation-delay: 3s;
+}
+
+.floating-effects span:nth-child(7) {
+    left: 70%;
+    animation-delay: 6s;
+}
+
+.floating-effects span:nth-child(8) {
+    left: 80%;
+    animation-delay: 2s;
+}
+
+.floating-effects span:nth-child(9) {
+    left: 90%;
+    animation-delay: 4s;
+}
+
+.floating-effects span:nth-child(10) {
+    left: 55%;
+    animation-delay: 7s;
+}
+
+
+/* Floating animation */
+
+@keyframes floatingHeart {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateY(-50vh) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+/* =========================
+   SECTION ANIMATION
+========================= */
+
+.gallery-section,
+.timeline-section,
+.cake-section,
+.letter-section,
+.final-section {
+    animation: sectionAppear 1.2s ease;
+}
+
+@keyframes sectionAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+/* =========================
+   BIRTHDAY FOOTER
+========================= */
+
+.birthday-footer {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    margin-top: 50px;
+
+    background: rgba(0, 0, 0, 0.15);
+
+    backdrop-filter: blur(10px);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.birthday-footer p {
+    margin: 10px 0;
+
+    font-size: 18px;
+}
+/* =========================
+   BACK TO TOP BUTTON
+========================= */
+
+#topButton {
+    position: fixed;
+
+    bottom: 25px;
+
+    right: 25px;
+
+    width: 50px;
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #ff4f81;
+
+    color: white;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 9999;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.3);
+
+    transition: 0.3s;
+}
+
+#topButton:hover {
+    transform: scale(1.1);
+}
+/* =========================
+   MOBILE PHOTO GALLERY
+========================= */
+
+@media (max-width: 600px) {
+
+    .gallery {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+
+    .photo-card img {
+        height: auto;
+        max-height: 350px;
+        object-fit: contain;
+    }
+
+}
+/* =========================
+   BIRTHDAY LETTER
+========================= */
+
+.letter-section {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.letter-section h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.envelope-container {
+    display: flex;
+    justify-content: center;
+    margin: 40px auto;
+}
+
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    background: #f8b6c8;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid #ff8fab;
+
+    transform-origin: top;
+    transition: transform 0.6s ease;
+
+    z-index: 3;
+}
+.letter-paper {
+    position: absolute;
+
+    left: 20px;
+    top: 20px;
+
+    width: 280px;
+    min-height: 180px;
+
+    background: white;
+
+    color: #333;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    border-radius: 8px;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition: all 0.6s ease;
+
+    z-index: 2;
+
+    overflow-y: auto;
+}
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .letter-paper {
+    opacity: 1;
+    transform: translateY(-100px);
+}
+.letter-paper h3 {
+    color: #ff4f81;
+    margin-bottom: 12px;
+}
+
+.letter-paper p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+/* =========================
+   GRAND FINALE
+========================= */
+
+.final-section {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.final-section h2 {
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+.final-section p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+#finalBirthdayText {
+    font-size: 48px;
+    margin: 30px 0;
+    animation: birthdayGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes birthdayGlow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+/* =========================
+   FIREWORKS EFFECT
+========================= */
+
+#fireworksArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.firework {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #ff4f81,
+        0 0 30px #ffd700;
+    animation: fireworkExplosion 1.5s ease-out forwards;
+}
+
+@keyframes fireworkExplosion {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(18);
+        opacity: 0;
+    }
+}
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+#musicButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #ff4f81;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease;
+}
+
+#musicButton:hover {
+    transform: scale(1.08);
+}
+@media (max-width: 600px) {
+    #musicButton {
+        top: 10px;
+        right: 10px;
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+}
+.timeline-photo {
+    width: 90%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    margin: 15px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+/* Full Screen Letter */
+
+.envelope.open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope.open .envelope-flap {
+    display: none;
+}
+.envelope.open .letter-paper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    max-width: 800px;
+    height: 80vh;
+    min-height: auto;
+    padding: 40px;
+    box-sizing: border-box;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
